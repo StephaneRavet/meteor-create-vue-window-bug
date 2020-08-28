@@ -10,6 +10,8 @@
 import Hello from './components/Hello.vue'
 import Info from './components/Info.vue'
 
+console.info(window)
+
 export default {
   components: {
     Hello,
