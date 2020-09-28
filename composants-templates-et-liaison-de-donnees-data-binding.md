@@ -84,7 +84,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  name: string = 'Stéphane';
+  name = 'Stéphane';
 
   constructor() {
   }
@@ -191,12 +191,12 @@ Récupérons ce qui a été émis par le composant search.
 
 {% code title="src/app/navbar/navbar.component.html" %}
 ```markup
-<app-search (search)="showChanges($event)"></app-search>
+<app-search (search)="onSearch($event)"></app-search>
 ```
 {% endcode %}
 
 * Se placer dans _src/app/navbar/navbar.component.ts_
-* Créons la méthode showChanges qui va réagir à l'événement
+* Créons la méthode onSearch qui va réagir à l'événement
 
 {% code title="src/app/navbar/navbar.component.ts" %}
 ```typescript
