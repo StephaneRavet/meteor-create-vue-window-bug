@@ -170,3 +170,15 @@ export class UsersComponent implements OnInit {
 ```
 {% endcode %}
 
+{% code title="users.component.html" %}
+```markup
+<button (click)="add()">Ajouter</button>
+<ul>
+  <li *ngFor="let user of users | filter:search; let i = index">
+    N°{{i}} : {{user.name}} [{{user.age}}]
+    <button (click)="removeUser(i)">delete</button>
+  </li>
+</ul>
+```
+{% endcode %}
+
