@@ -120,13 +120,13 @@ export class UsersComponent {
     {name: 'Marc', age: 4, id: 4},
   ];
   
-  add(): any {
+  add(): void {
     const newIndex = this.users.length + 1
     const newUser = {name: `Test${newIndex}`, age: newIndex, id: newIndex}
     this.users.push(newUser); // voir info ci-dessous
   }
   
-  trackByUserId(user: any): string {
+  trackByUserId(user: any): number {
     return user.id
   }
 }
@@ -241,7 +241,7 @@ Syntaxe : {{ value\_expression \| date \[ : format \[ : timezone \[ : locale \] 
 {% tabs %}
 {% tab title="HTML" %}
 ```typescript
-{{ dateObj | date:'medium' }} // -> 9 déc. 2019 à 16:18:23
+{{ dateObj | date:'full' }} // -> mardi 29 septembre 2020 à 11:31:22 GMT+02:00
 ```
 {% endtab %}
 {% endtabs %}
