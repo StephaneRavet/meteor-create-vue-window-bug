@@ -28,73 +28,6 @@ getUser(id)
 Promise.all([getUser(id), getAvatar(id), sendConnectedNotification(id)])
 ```
 
-## Utilisation de promesses
-
-{% hint style="success" %}
-**Mise en pratique**
-
-Utilisons les promesses pour récupérer la liste des utilisateurs depuis un serveur.
-
-Le serveur qui nous fourni la liste des utilisateurs est : [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
-
-Nous aurons besoin d'une librairie qui gère les requête HTTP avec des promesses.
-
-{% code title="shared.module.ts" %}
-```typescript
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FilterPipe } from './filter.pipe';
-import { HttpClientModule } from "@angular/common/http";
-@NgModule({
-  declarations: [FilterPipe],
-  imports: [
-    CommonModule,
-    HttpClientModule
-  ],
-  exports: [FilterPipe]
-})
-export class SharedModule { }
-```
-{% endcode %}
-
-Mettons à jour notre `UserService`.
-
-{% code title="src/app/users/user.service.ts" %}
-```typescript
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class UsersService {
-
-  users: any[];
-  url = 'https://jsonplaceholder.typicode.com/users';
-
-  constructor(private http: HttpClient) {
-    this.http.get<any[]>(this.url).toPromise()
-      .then(result => this.users = result);
-  }
-
-  get(): any[] {
-    return this.users;
-  }
-
-  removeUser(index: number): any[] {
-    this.users.splice(index, 1);
-    return [...this.users];
-  }
-
-  add(): any[] {
-    return [...this.users];
-  }
-
-}
-```
-{% endcode %}
-{% endhint %}
-
 ## `async` / `await`
 
 Avec `async` et `await`, on peut utiliser les promesses comme si c'était du code synchrone.
@@ -128,6 +61,8 @@ catch (error) {
 {% hint style="info" %}
 Une fonction `async` peut être appelée depuis n'importe quelle fonction et son type de retour sera une **`Promise`**.
 {% endhint %}
+
+## Utilisation de promesses
 
 {% hint style="success" %}
 Mise en pratique
