@@ -67,29 +67,71 @@ Une fonction `async` peut être appelée depuis n'importe quelle fonction et son
 {% hint style="success" %}
 Mise en pratique
 
-modifiez `UserService et UsersComponent` pour utiliser `async` et `await`.
+{% code title="src/app/users/users.service.ts" %}
+```typescript
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-Mettons à jour `UsersComponent`.
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersService {
+
+  users: any[] = [];
+  url = 'https://jsonplaceholder.typicode.com/users';
+
+  constructor(private http: HttpClient) {
+  }
+
+  async get(): Promise<any[]> {
+    this.users = await this.http
+      .get<any[]>(this.url)
+      .toPromise();
+    return this.users;
+  }
+
+  removeUser(index: number): any[] {
+    this.users.splice(index, 1);
+    return [...this.users];
+  }
+
+  add(): any[] {
+    return [...this.users];
+  }
+
+}
+```
+{% endcode %}
 
 {% code title="src/app/users/users.component.ts" %}
 ```typescript
-import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from './user.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {UsersService} from './users.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+
   users: any[];
+
   @Input() search: string;
 
-  constructor(private userService: UserService) {
+  constructor(private usersService: UsersService) {
   }
 
-  async ngOnInit() {
-    this.users = await this.userService.get();
+  async ngOnInit(): Promise<void> {
+    this.users = await this.usersService.get();
+  }
+
+  add(): void {
+    this.users = this.usersService.add();
+  }
+
+  removeUser(index: number): void {
+    this.users = this.usersService.removeUser(index);
   }
 
 }
