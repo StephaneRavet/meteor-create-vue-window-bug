@@ -61,31 +61,44 @@ Mettons à jour notre `UserService`.
 
 {% code title="src/app/users/user.service.ts" %}
 ```typescript
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private users: Promise<any[]>;
-  
-  constructor(private http: HttpClient) { }
-  
-  get(): Promise<any[]> {
-    return this.http
-      .get<any[]>('https://jsonplaceholder.typicode.com/users')
-      .toPromise();
+  users: any[];
+  url = 'https://jsonplaceholder.typicode.com/users';
+
+  constructor(private http: HttpClient) {
+    this.http.get<any[]>(this.url).toPromise()
+      .then(result => this.users = result);
   }
+
+  get(): any[] {
+    return this.users;
+  }
+
+  removeUser(index: number): any[] {
+    this.users.splice(index, 1);
+    return [...this.users];
+  }
+
+  add(): any[] {
+    return [...this.users];
+  }
+
 }
 ```
 {% endcode %}
 
 {% code title="src/app/users/users.component.ts" %}
 ```javascript
-ngOnInit() {
-    this.userService.get().then(result => this.users = result);
-}
+  ngOnInit(): void {
+    this.users = this.usersService.get();
+  }
 ```
 {% endcode %}
 {% endhint %}
