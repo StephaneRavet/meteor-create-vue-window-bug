@@ -84,10 +84,7 @@ export class UsersService {
   }
 
   async get(): Promise<any[]> {
-    this.users = await this.http
-      .get<any[]>(this.url)
-      .toPromise();
-    return this.users;
+    return this.users = await this.http.get<any[]>(this.url).toPromise();
   }
 
   removeUser(index: number): any[] {
@@ -96,7 +93,9 @@ export class UsersService {
   }
 
   add(): any[] {
-    return [...this.users];
+    const newIndex = this.users.length + 1;
+    const newUser = {name: `Test${newIndex}`, age: newIndex, id: newIndex};
+    return this.users = [...this.users, newUser];
   }
 
 }
