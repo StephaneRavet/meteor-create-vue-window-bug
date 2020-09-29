@@ -295,7 +295,7 @@ Nous souhaitons avoir un pipe `filter` qui s'utilise comme ceci :
 
 {% code title="src/app/users/users.component.html" %}
 ```markup
-<p *ngFor="let user of users | filter:criteria; trackBy: trackByUserId">
+<p *ngFor="let user of users | filter:search; trackBy: trackByUserId">
   {{user.name}} : {{user.age}}
 </p>
 ```
