@@ -93,14 +93,6 @@ export class UsersService {
 }
 ```
 {% endcode %}
-
-{% code title="src/app/users/users.component.ts" %}
-```javascript
-  ngOnInit(): void {
-    this.users = this.usersService.get();
-  }
-```
-{% endcode %}
 {% endhint %}
 
 ## `async` / `await`
