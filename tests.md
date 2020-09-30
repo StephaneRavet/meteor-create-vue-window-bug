@@ -416,6 +416,8 @@ Pour ajouter un test End-to-End, il suffit de créer un fichier `.e2e-spec.ts` d
 {% tabs %}
 {% tab title="signin.e2e-spec.ts" %}
 ```typescript
+import { SigninPage } from './signin.po';
+
 describe('signin', () => {
 
     const signinPage = new SigninPage();
