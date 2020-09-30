@@ -699,7 +699,7 @@ const userActivity$ = getUserConnection()
     .pipe(mergeMap(user => getActivity(user)));
 
 userActivity$
-    .subscribe(message => console.log(message));
+    .subscribe(message: string => console.log(message));
 ```
 
 On obtient le résultat suivant :
