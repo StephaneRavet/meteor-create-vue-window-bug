@@ -90,7 +90,6 @@ subscription.unsubscribe();
 La méthode `unsubscribe` va donc :
 
 * **désinscrire les callbacks** : `next`, `error` et  `complete`
-* **détruire l'`Observable`** _\(c'est à dire interrompre les traitements effectués par l'`Observable`\)_
 * éventuellement **libérer la mémoire** car en désinscrivant les callbacks, le "garbage collector" libérera la mémoire occupée par les objets référencés dans les callbacks _\(s'ils ne sont plus référencés ailleurs\)_.
 
 {% hint style="danger" %}
@@ -405,18 +404,20 @@ On profite généralement du "Lifecycle Hook" `ngOnDestroy` pour déclencher l'`
 {% tabs %}
 {% tab title="book-search.component.ts" %}
 ```typescript
-private bookListSubscription: Subscription;
-
-constructor(private bookRepository: BookRepository) {
-}
-
-ngOnInit() {
-    this.bookListSubscription = this.bookRepository.getBookList()
-        .subscribe(bookList => this.bookList = bookList);
-}
-
-ngOnDestroy() {
-    this.bookListSubscription.unsubscribe();
+export class BookSearchComponent implements OnInit, OnDestroy {
+    private bookListSubscription: Subscription;
+    
+    constructor(private bookRepository: BookRepository) {
+    }
+    
+    ngOnInit() {
+        this.bookListSubscription = this.bookRepository.getBookList()
+            .subscribe(bookList => this.bookList = bookList);
+    }
+    
+    ngOnDestroy() {
+        this.bookListSubscription.unsubscribe();
+    }
 }
 ```
 {% endtab %}
@@ -544,30 +545,6 @@ export class UsersComponent {
 ```
 {% endcode %}
 {% endhint %}
-
-## L’intérêt des Subjects
-
-Un **Subject** est à la fois un **observable ET un observateur**. On peut donc **subscribe** dessus, mais également lui envoyer des valeurs :
-
-```typescript
-const subject = new Subject<number>();
-
-subject.subscribe((number) => {
-    console.log(1, number);
-});
-
-
-subject.subscribe((number) => {
-    console.log(2, number);
-});
-
-
-subject.next(1);  // On envoie une donnée
-subject.next(2);  // On envoie une autre donnée
-subject.complete();  // On indique que l'observable n'enverra plus de données
-```
-
-**Subject** à lui seul ne sert pas forcément à grand chose, mais ses classes spécialisées sont, elles, bien utiles.
 
 ## Les principaux opérateurs
 
