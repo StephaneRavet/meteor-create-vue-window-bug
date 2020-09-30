@@ -23,7 +23,9 @@ Elles permettent de manipuler le DOM en ajoutant ou en retirant des éléments.
 </div>
 
 <div *ngIf="isLoggedIn; else loggedOut">Bienvenue !</div>
-<ng-template #loggedOut>Connectez-vous</ng-template>
+<ng-template #loggedOut>
+    <div>Connectez-vous</div>
+</ng-template>
 ```
 
 ## Directive structurelle : `*ngFor`
