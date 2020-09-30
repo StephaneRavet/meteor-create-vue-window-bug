@@ -80,7 +80,7 @@ import {Component} from '@angular/core';
 selector: 'app',
 styles: [`.red {color: red;}`],
 template: `
-  <p *ngFor="let user of users; let i = index;">
+  <p *ngFor="let user of users; let i = index">
     N°{{i}} --> {{user.name}} : {{user.age}}
   </p>`
 })
