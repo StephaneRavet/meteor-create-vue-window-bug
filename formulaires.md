@@ -81,7 +81,7 @@ Pour rendre les champs obligatoires on ajoute _`required`_ aux balises.
 Si on veut afficher "formulaire invalide" seulement après la soumission :
 
 ```markup
-<div *ngIf="myForm.submitted && myForm.invalid">
+<div *ngIf="myForm.dirty && myForm.invalid">
     Formulaire invalide
 </div>
 ```
@@ -89,7 +89,7 @@ Si on veut afficher "formulaire invalide" seulement après la soumission :
 Pour gérer séparément les erreurs pour chaque champs :
 
 ```markup
-<div *ngIf="myForm.submitted">
+<div *ngIf="myForm.dirty">
 
     <div *ngIf="myForm.invalid">
         Formulaire invalide
