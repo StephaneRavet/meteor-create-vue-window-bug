@@ -1,26 +1,41 @@
 # Nouveautés Angular et concepts avancés
 
-## Nouveautés Angular 8 \(mai 2019\)
+## Nouveautés
 
-### Meilleure prise en charge des Web Workers
+### Angular 9 \(décembre 2019\)
 
-### _Lazy loader_ \(charger à la demande\) une partie d'application Angular
-
-### **Mise à jour des dépendances**
-
-Angular 8 inclut des mises à jour d'outils comme RxJS et TypeScript.
-
-## Nouveautés Angular 9 \(décembre 2019\)
-
-### **Compilateur Ivy : bundles optimisés pour les navigateurs modernes**
+#### **Compilateur Ivy : bundles optimisés pour les navigateurs modernes**
 
 Le build des applications génèrera **deux bundles séparés** : 1 pour les moteurs JS anciens \(ES5\) et 1 pour les moteurs JS modernes \(compatibles ES2015+\).
 
 Ainsi, **les navigateurs modernes téléchargeront la version optimisée de l'application** \(**plus légère et plus rapide**, mais nécessitant des moteurs JS récents\), et les navigateurs anciens \(type Internet Explorer\) téléchargeront la version standard, compatible avec les anciens moteurs\).
 
-### internationalisation
+#### internationalisation
 
 Vous pouvez utiliser l'interface de ligne de commande pour générer la plupart du code standard nécessaire à la création de fichiers pour les traducteurs et à la publication de votre application dans plusieurs langues.
+
+### Angular 10
+
+* Mise à jour dss dépendances
+* Optimisations
+
+#### Optional Stricter Settings
+
+Possibilité de configurer un projet en mode _Strict_  :
+
+```text
+ng new MyApp --strict
+```
+
+Cela initialise le projet avec quelques nouveaux paramètres qui améliorent la maintenabilité, aident à détecter les bugs à l’avance et permettent à Angular CLI d’effectuer des optimisations avancées sur l’application.
+
+Plus précisément, l’indicateur strict effectue les opérations suivantes:
+
+* Active le mode strict dans TypeScript
+* Transforme la vérification du type de modèle en Strict
+* Réduit la taille des bundles jusqu'à 75%
+* Configure les règles de _linting_ pour empêcher les déclarations de type _any_
+* Configure votre application comme sans effet secondaire pour permettre un _tree-shaking_ plus avancé
 
 ## PWA
 
