@@ -240,7 +240,7 @@ Pour pouvoir filtrer la liste des utilisateurs en fonction de notre critère sai
 * Envoyer l'événement _searchChange_ depuis le composant _navbar_
 * Récupérer l'événement _searchChange_ dans le composant _app_ 
 * Envoyer la donnée _criteria_ au _UsersComponent_ grace à un paramètre _search_
-* Utiliser _search_ dans le _UsersComponent_ pour l'afficher dans la console chaque fois qu'il change
+* Utiliser _search_ dans le _UsersComponent_ pour l'afficher dans le template
 {% endhint %}
 
 ### Le two-way data-binding dans un composant \(lien à double-sens entre les données\)
