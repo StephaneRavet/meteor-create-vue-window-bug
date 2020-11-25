@@ -126,8 +126,8 @@ Nous allons envoyer une donnée d'un composant parent à un composant enfant.
 {% hint style="success" %}
 **Mise en pratique** \(ensemble, pas à pas dans l'IDE\)
 
-* Ajouter `name: string;` dans navbar.component.ts
-* Ajouter `@Input()` pour cette propriété name
+* Modifier`name = '';` dans navbar.component.ts
+* Ajouter `@Input()` pour cette propriété `name`
 * Normalement, l'IDE nous rajoute `import {Input} from '@angular/core';`
 * Ajouter `<app-navbar name="Bob"></app-navbar>` dans app.component.html
 * Vérifier que cela fonctionne
