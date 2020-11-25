@@ -174,46 +174,6 @@ Elle permet de modifier les classes d'un élément.
 
 En inspectant l'élément dans le navigateur, celui-ci aura la classe : `"une-classe"`.
 
-## Création d'une directive personnalisée
-
-```bash
-ng generate directive highlight --export 
-```
-
-Voici comment se présente la directive créée :
-
-{% tabs %}
-{% tab title="highlight.directive.ts" %}
-```typescript
-@Directive({
-  selector: '[appHighlight]'
-})
-export class HighlightDirective {
-}
-```
-{% endtab %}
-{% endtabs %}
-
-Voici comment elle peut être utilisée dans un template :
-
-```markup
-<div app-highlight>A mettre en avant !</div>
-```
-
-Si on donne à la directive ces instructions :
-
-{% code title="highlight.directive.ts" %}
-```typescript
-export class HighlightDirective {
-    constructor(elr:ElementRef){
-        elr.nativeElement.style.background = 'red';
-    }
-}
-```
-{% endcode %}
-
-La `div` qui reçoit la directive `app-highlight` aura alors son fond en rouge.
-
 ## Utiliser les pipes natifs
 
 Les Pipes sont des fonctions utilisables directement depuis la vue afin de transformer les valeurs.
