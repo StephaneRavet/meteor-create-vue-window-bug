@@ -148,54 +148,6 @@ console.log(contributor.sayNumberCommit())
 {% endtab %}
 {% endtabs %}
 
-#### Les fonctions fléchées \(arrow functions\) / anonymes \(lamba\)
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-const a = () => {}  // ES6
-const a = function () {} // ES5
-
-const b = i => i + 1
-const b = function (i) { return i + 1 }
-
-const c = (p1, p2) => console.log(p1, p2)
-const c = function (p1, p2) { return console.log(p1, p2) }
-```
-{% endtab %}
-{% endtabs %}
-
-Utilité des fonctions fléchés :
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-class User { 
-  constructor() { 
-    this.name = 'Arthur'
-  }
-
-  displayName() { 
-    console.log(this.name) // -> ?
-    const fnName = function() { 
-      console.log(this.name)
-    }
-    fnName() // -> ?
-  }
-}
-```
-{% endtab %}
-{% endtabs %}
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-// Corriger le code comme suit :
-const fnName = () => console.log(this.name)
-```
-{% endtab %}
-{% endtabs %}
-
 #### Destructuring \(déconstruction\)
 
 {% tabs %}
@@ -220,31 +172,6 @@ const obj = {}
 
 const { b, a } = { a: 10, b: 20}
 console.log(a) // -> 10
-```
-{% endtab %}
-{% endtabs %}
-
-Exemple de destructuring dans les paramètres de fonction :
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-const user = { address: 'Rue de la paix' }
-
-function geolocUser (user) {
-  return geoloc(user.address) // -> { latitude, longitude }
-}
-console.log(geolocUser(user))
-
-// function geolocUser ({ address }) {
-//   return geoloc(address) // -> { latitude, longitude }
-// }
-// console.log(geolocUser(user))
-// console.log(geolocUser(place))
-
-// L'appel geolocUser(user) et la déclaration geolocUser ({ address })
-// est équivalent à : 
-const { address } = user
 ```
 {% endtab %}
 {% endtabs %}
