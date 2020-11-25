@@ -54,33 +54,11 @@ L’instruction `const` a la même portée que `let` :
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-// Saisir dans une console Chrome
-
 const a = 'aaaa'
 a = 'bbbb' // -> ?
 ```
 {% endtab %}
 {% endtabs %}
-
-Quand on dit "variable constante" c’est plutôt la référence à la valeur qui ne peut pas être changée. Exemple :
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-// Saisir dans une console Chrome
-
-const b = {}
-b.name = 'Arthur' // -> Erreur ou pas ?
-console.log(b)
-b = { name: 'Sabrina' } // -> Erreur ou pas ?
-b.name = 'Sabrina' // -> Erreur ou pas ?
-```
-{% endtab %}
-{% endtabs %}
-
-Pour les tableaux, même comportement que les objets puisque en JS, les tableaux sont en fait des objects avec pour propriétés 0,1, 2, 3...
-
-L'instruction `var`
 
 #### Template strings
 
@@ -96,16 +74,14 @@ console.log(`${firstname} ${lastname}`) // -> ?
 
 Les template strings utilisent le caractère back-tick \(accent grave\) pour délimiter les chaînes de caractères.
 
-Les template strings sont multi-lignes. Les espaces sont conservés.
+Les template strings sont multi-lignes. 
 
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-// Saisir dans une console Chrome
-
 console.log(`foo
-             bar
-             baz`)
+bar
+baz`)
 ```
 {% endtab %}
 {% endtabs %}
@@ -142,41 +118,6 @@ console.log(user.sayName()) // -> ?
 Simple et efficace - Cette classe transcompilée en ES5 aura une syntaxe beaucoup moins agréable à utiliser.
 
 Les classes sont utilisées partout dans Angular.
-
-**Accesseur et modificateur \(Getter & setter\)**
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-class User {
-  constructor(firstname, lastname, type) {
-    this.firstname = firstname
-    this.lastname = lastname
-    this.type = type
-  }
-
-  sayName() { // méthode
-   return `${this.firstname} ${this.lastname}`
-  }
-
-  get role() { // getter
-    return this.type
-  }
-
-  set role(value) { // setter
-    return this.type = value
-  }
-}
-
-const user = new User("John", "Doe", "Contributor")
-
-console.log(user.sayName()) // -> ?
-console.log(user.role) // -> ?
-user.role = "Owner"
-console.log(user.role) // -> ?
-```
-{% endtab %}
-{% endtabs %}
 
 **Héritage**
 
