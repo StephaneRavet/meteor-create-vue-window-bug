@@ -13,6 +13,8 @@
 npm install -global @angular/cli
 
 ng new formation
+? Do you want to enforce stricter type checking and stricter bundle
+ budgets in the workspace? # Yes
 ? Would you like to add Angular routing ? # Yes
 ? Which stylesheet format would you like to use ? # CSS
 
