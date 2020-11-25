@@ -326,7 +326,8 @@ class Customer {
 ```typescript
 // Typage du retour de la fonction
 function getUsersFromAPI(url:string=''):User[] {
-  // ...
+  let users = [new User()];
+  return users;
 }
 ```
 {% endtab %}
