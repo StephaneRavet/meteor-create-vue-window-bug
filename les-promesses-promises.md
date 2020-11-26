@@ -96,7 +96,7 @@ import {HttpClient} from '@angular/common/http';
 export class UsersService {
 
   users: any[] = [];
-  url = 'https://jsonplaceholder.typicode.com/users';
+  url = 'https://jsonplaceholder.typicode.com';
 
   constructor(private http: HttpClient) {
   }
