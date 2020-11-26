@@ -51,13 +51,13 @@ export class UsersService {
 
   get(): any[] {
     return [
-      {name: 'Eva', age: 55},
-      {name: 'Aude', age: 45},
-      {name: 'Anne', age: 33},
-      {name: 'Marc', age: 17},
+      {name: 'Eva', id: 55},
+      {name: 'Aude', id: 45},
+      {name: 'Anne', id: 33},
+      {name: 'Marc', id: 17},
       // rajoutons des données pour rendre la modification visible
-      {name: 'Sansom', age: 4},
-      {name: 'Bob', age: 5},
+      {name: 'Sansom', id: 4},
+      {name: 'Bob', id: 5},
     ];
   }
 }
@@ -121,7 +121,7 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
   users : any[] = [
-     {name: 'Bob', age: 55}, {name: 'Sam', age: 45}, {name: 'Jim', age: 33}, {name: 'Ana', age: 17},  {name: 'Lou', age: 4},
+     {name: 'Bob', id: 55}, {name: 'Sam', id: 45}, {name: 'Jim', id: 33}, {name: 'Ana', id: 17},  {name: 'Lou', id: 4},
   ];
   constructor() { }
   get(): any[] {
