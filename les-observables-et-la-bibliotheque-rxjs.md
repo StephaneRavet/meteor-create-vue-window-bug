@@ -119,115 +119,11 @@ Le service `HttpClient` a pour avantages de :
 
 ### Utilisation de HttpClient
 
-#### 1. Injection du service `HttpClient`
-
-`HttpClient` est un service Angular ; on peut donc le récupérer avec l'injection de dépendance.
-
-{% tabs %}
-{% tab title="book-search.component.ts" %}
-```typescript
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-@Component({
-    selector: 'wt-book-search',
-    templateUrl: './book-search.component.html'
-})
-export class BookSearchComponent {
-
-    constructor(private httpClient: HttpClient) {
-    }
-
-}
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="warning" %}
-On obtient l'erreur suivante `No provider for HttpClient!` car le service `HttpClient` n'est pas encore Tree-Shakable et il faut donc importer le module associé `HttpClientModule`.
-{% endhint %}
-
-{% tabs %}
-{% tab title="book.module.ts" %}
-```typescript
-import { HttpClientModule } from '@angular/common/http';
-
-@NgModule({
-    declarations: [
-        BookPreviewComponent,
-        BookSearchComponent
-    ],
-    exports: [
-        BookPreviewComponent,
-        BookSearchComponent
-    ],
-    imports: [
-        HttpClientModule,
-        SharedModule
-    ]
-})
-export class BookModule {
-}
-```
-{% endtab %}
-{% endtabs %}
-
-#### 2. Exécution de la requête
-
-Nous pouvons donc récupérer les données par API dans le `ngOnInit`.
-
-{% tabs %}
-{% tab title="book-search.component.ts" %}
-```typescript
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-@Component({
-    selector: 'wt-book-search',
-    templateUrl: './book-search.component.html'
-})
-export class BookSearchComponent implements OnInit {
-
-    private bookListUrl = 'https://www.googleapis.com/books/v1/volumes?q=extreme%20programming';
-
-    constructor(private httpClient: HttpClient) {
-    }
-
-    ngOnInit() {
-        this.httpClient.get(this.bookListUrl);
-    }
-
-}
-```
-{% endtab %}
-{% endtabs %}
-
-#### Déclenchement de la requête au `subscribe`
-
-En inspectant le comportement du "browser“, on peut remarquer que **la requête n'est pas envoyée**.
-
-En effet, les méthodes `get`, `delete`, `patch`, `post`, `put`, `request` etc... **retournent toujours un `Observable`.**
-
-Cet `Observable` est "lazy" et il faut donc `subscribe` pour déclencher le traitement.
-
-### Utilisation dans un Service
-
-{% hint style="success" %}
+{% hint style="info" %}
 Le service `HttpClient` ne devrait pas être utilisé directement depuis les composants.
 
 Il faut "wrapper" l'interaction avec les APIs dans des **services dédiés** et **réutilisables**.
 {% endhint %}
-
-Il nous faudrait donc un service que l'on puisse utiliser ainsi depuis nos composants :
-
-```typescript
-bookRepository.getBookList()
-    .subscribe(bookList => this.bookList = bookList);
-```
-
-#### Transformation de la réponse avec un opérateur
-
-Ce service retourne un `Observable`. La **transformation** des données doit donc se faire **avec un opérateur dans le service**.
 
 {% hint style="success" %}
 **Mise en pratique**
@@ -364,39 +260,7 @@ Dans les cas les plus simples, cette approche est la plus adaptée car c'est **l
 
 Le "pipe" `async` permet de `préparer l'Observable dans le composant` et laisser **la vue `subscribe` quand elle en a besoin et si elle en a besoin**.
 
-{% tabs %}
-{% tab title="book-search.component.ts" %}
-```typescript
-export class BookSearchComponent {
-
-    bookList$: Observable<Book[]>;
-
-    constructor(private bookRepository: BookRepository) {
-        this.bookList$ = this.bookRepository.getBookList();
-    }
-
-}
-```
-{% endtab %}
-{% endtabs %}
-
-Remarquez que l'**on se permet de créer l'`Observable` directement dans le constructeur**. En effet, tant que l'on ne `subscribe` pas, aucun traitement n'est déclenché.
-
-#### Fonctionnement du "pipe" `async`
-
-{% tabs %}
-{% tab title="book-search.component.html" %}
-```markup
-<wt-book-preview
-        *ngFor="let book of bookList$ | async"
-        [book]="book"></wt-book-preview>
-```
-{% endtab %}
-{% endtabs %}
-
-Le "pipe" `async` **`subscribe` à l'`Observable` `bookList$`** et **permet de mettre à jour la vue en conséquence**.
-
-A la destruction de l'élément _\(e.g. : "toggle" de la liste via `*ngIf`\)_, **le "pipe" `async` `unsubscribe` automatiquement**.
+Le "pipe" `async` **`subscribe` à l'`Observable`** et, à la destruction de l'élément, **`unsubscribe` automatiquement**.
 
 {% hint style="success" %}
 **Mise en pratique**
