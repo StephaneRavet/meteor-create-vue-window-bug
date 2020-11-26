@@ -2,7 +2,17 @@
 
 ## Définition
 
-Historiquement, la première méthode pour gérer l'asynchrone a été les **callback**. Ensuite les promesses ont été ajoutées nativement dans javascript \(ES6/ES2015\).
+Historiquement, la première méthode pour gérer l'asynchrone a été les **callback**.
+
+```typescript
+let callback = function (result) {
+    process(result)
+}
+
+callDataBase(query, callback)
+```
+
+Ensuite les promesses ont été ajoutées nativement dans javascript \(ES6/ES2015\).
 
 Une promesse est un objet qui représente quelque chose qui sera disponible à l'avenir. Les promesses proposent qu'au lieu d'attendre la valeur que nous voulons \(par exemple le résultat d'une requête HTTP\), nous recevons quelque chose qui représente la valeur à cet instant afin que nous puissions "continuer notre vie", puis à un moment donné reprendre l’exécution en utilisant la valeur généré par cette promesse.
 
