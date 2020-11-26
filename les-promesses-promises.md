@@ -202,3 +202,46 @@ get(): Promise<User[]> {
 ```
 {% endhint %}
 
+#### Astuce : n'oubliez pas les metadata
+
+Idéalement, pour faciliter l'extensibilité et la gestion de la pagination, pensez à produire un objet englobant la liste ainsi que les "metadata" associées _\(pagination etc...\)_.
+
+```typescript
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+interface ListResponse<T> {
+    meta: {
+        totalCount: number
+    };
+    itemList: T[];
+}
+
+class BookRepository {
+
+    getBookList() {
+        return this.getBookListWithMeta()
+            .pipe(map(bookListResponse => bookListResponse.itemList));
+    }
+
+    getBookListWithMeta(): Observable<ListResponse<Book>> {
+        return of({
+            meta: {
+                totalCount: 100
+            },
+            itemList: [
+                new Book(),
+                new Book()
+            ]
+        });
+    }
+
+}
+
+new BookRepository().getBookListWithMeta()
+    .subscribe(bookListResponse => {
+        const bookCount = bookListResponse.meta.totalCount;
+        const bookList = bookListResponse.itemList;
+    });
+```
+
