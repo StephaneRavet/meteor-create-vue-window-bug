@@ -155,13 +155,13 @@ export class UsersComponent implements OnInit {
   constructor(private usersService: UsersService) {
   }
   ngOnInit(): void {
-    this.users = this.userService.get();
+    this.users = this.usersService.get();
   }
   add(): void {
-    this.users = this.userService.add();
+    this.users = this.usersService.add();
   }
   removeUser(index: number): void {
-    this.users = this.userService.removeUser(index);
+    this.users = this.usersService.removeUser(index);
   }
   trackByUserId(user: any): number {
     return user.id;
