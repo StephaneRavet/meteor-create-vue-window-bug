@@ -1,47 +1,5 @@
 # Composants, templates et liaison de données \(data-binding\)
 
-## Cycle de vie et structure des Angular components
-
-Des hooks sont présents sur chaque composant.
-
-Cela permet de déclencher des actions selon l'état du composant.
-
-Dans l’ordre d'exécution :
-
-* **ngOnChanges** : appelé quand une valeur dans un champ change \(appelé avant init\)
-* **ngOnInit** : appelé lors de l'initialisation du composant
-* ngDoCheck : appelé à chaque changement détecté
-* ngAfterContentInit : appelé une fois après le premier ngDoCheck \(\)
-* ngAfterContentChecked : appelé après ngAfterContentInit \(\) et chaque ngDoCheck \(\) suivant
-* ngAfterViewInit : appelé une fois après le premier ngAfterContentChecked \(\)
-* ngAfterViewChecked : appelé après ngAfterViewInit \(\) et chaque ngAfterContentChecked \(\) suivant
-* **ngOnDestroy** : appelé juste avant qu'angular ne détruise le composant
-
-Voici comment ces hooks sont utilisés dans un composant :
-
-```typescript
-import {Component, OnDestroy, OnInit} from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit, OnDestroy {
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    // Faire des trucs à l'initialisation du composant
-  }
-
-  ngOnDestroy(): void {
-    // Faire des trucs à lorsque le composant n'est plus utilisé
-  }
-}
-```
-
 ## L’interpolation
 
 Data-Binding = lier une donnée entre la classe et le template
