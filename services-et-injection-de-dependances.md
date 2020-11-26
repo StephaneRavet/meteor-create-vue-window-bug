@@ -55,7 +55,7 @@ export class UsersService {
       {name: 'Aude', age: 45},
       {name: 'Anne', age: 33},
       {name: 'Marc', age: 17},
-      // rajoutons un nom pour rendre la modification visible
+      // rajoutons des données pour rendre la modification visible
       {name: 'Sansom', age: 4},
       {name: 'Bob', age: 5},
     ];
