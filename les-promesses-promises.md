@@ -66,6 +66,12 @@ catch (error) {
 
 {% hint style="warning" %}
 `await` ne peut être utilisé que dans une fonction `async`.
+
+```typescript
+async function getUser(id) {
+    return await callDabase(query);
+}
+```
 {% endhint %}
 
 {% hint style="info" %}
