@@ -83,6 +83,8 @@ Une fonction `async` peut être appelée depuis n'importe quelle fonction et son
 {% hint style="success" %}
 Mise en pratique
 
+Ajouter l'import de `HttpClientModule` dans `UsersModule`.
+
 {% code title="src/app/users/users.service.ts" %}
 ```typescript
 import {Injectable} from '@angular/core';
@@ -100,7 +102,9 @@ export class UsersService {
   }
 
   async get(): Promise<any[]> {
-    return this.users = await this.http.get<any[]>(this.url).toPromise();
+    return this.users = await this.http
+      .get<any[]>(this.url + '/users')
+      .toPromise();
   }
 
   removeUser(index: number): any[] {
