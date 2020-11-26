@@ -39,10 +39,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UsersComponent implements OnInit {
   users: any[] = [
-    {name: 'Eva', age: 45},
-    {name: 'Aude', age: 33},
-    {name: 'Anne', age: 17},
-    {name: 'Marc', age: 4},
+    {name: 'Eva', id: 45},
+    {name: 'Aude', id: 33},
+    {name: 'Anne', id: 17},
+    {name: 'Marc', id: 4},
   ];
   
   constructor() {
@@ -88,10 +88,10 @@ template: `
 })
 export class AppComponent {
   users: any[] = [
-    {name: 'Eva', age: 45},
-    {name: 'Aude', age: 33},
-    {name: 'Anne', age: 17},
-    {name: 'Marc', age: 4},
+    {name: 'Eva', id: 45},
+    {name: 'Aude', id: 33},
+    {name: 'Anne', id: 17},
+    {name: 'Marc', id: 4},
   ]
 }
 ```
@@ -116,15 +116,15 @@ import {Component} from '@angular/core';
 })
 export class UsersComponent {
   users: any[] = [
-    {name: 'Eva', age: 45, id: 1},
-    {name: 'Aude', age: 33, id: 2},
-    {name: 'Anne', age: 17, id: 3},
-    {name: 'Marc', age: 4, id: 4},
+    {name: 'Eva', id: 45},
+    {name: 'Aude', id: 33},
+    {name: 'Anne', id: 17},
+    {name: 'Marc', id: 4},
   ];
   
   add(): void {
     const newIndex = this.users.length + 1
-    const newUser = {name: `Test${newIndex}`, age: newIndex, id: newIndex}
+    const newUser = {name: `Test${newIndex}`, id: newIndex}
     this.users.push(newUser); // voir info ci-dessous
   }
   
@@ -329,7 +329,7 @@ Pour qu'une modification soit détectée correctement, il faut donc cloner l'obj
 ```typescript
 add(): any {
   const newIndex = this.users.length + 1;
-  const newUser = { name: `Test${newIndex}`, age: 15, id: newIndex };
+  const newUser = { name: `Test${newIndex}`, id: newIndex };
   this.users = [...this.users, newUser];
 }
 ```
