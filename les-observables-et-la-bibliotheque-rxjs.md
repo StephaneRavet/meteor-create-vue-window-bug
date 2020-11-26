@@ -473,7 +473,7 @@ A la destruction de l'élément _\(e.g. : "toggle" de la liste via `*ngIf`\)_, *
 {% code title="src/app/users/users.component.html" %}
 ```markup
 <p *ngFor="let user of users | async | filter : search">
-  {{user.name}} : {{user.age}}
+  {{user.name}} : {{user.id}}
 </p>
 ```
 {% endcode %}
