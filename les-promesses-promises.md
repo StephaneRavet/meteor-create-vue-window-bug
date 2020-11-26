@@ -114,7 +114,7 @@ export class UsersService {
 
   add(): any[] {
     const newIndex = this.users.length + 1;
-    const newUser = {name: `Test${newIndex}`, age: newIndex, id: newIndex};
+    const newUser = {name: `Test${newIndex}`, id: newIndex};
     return this.users = [...this.users, newUser];
   }
 
