@@ -150,11 +150,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  @Input() criteria: string;
-  users: any[];
+  @Input() search = '';
+  users: any[] = [];
   constructor(private usersService: UsersService) {
   }
-  ngOnInit() {
+  ngOnInit(): void {
     this.users = this.userService.get();
   }
   add(): void {
