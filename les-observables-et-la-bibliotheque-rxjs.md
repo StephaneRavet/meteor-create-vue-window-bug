@@ -349,6 +349,31 @@ Clementine Bauch
 A partir de la liste de `User` qu'on reçoit dans le `userService`, on veut pouvoir afficher l'adresse des utilisateurs grâce à un nouvelle propriété `address.fullAddress` qui va contenir leur adresse complète.
 {% endhint %}
 
+**Correction**
+
+{% code title="user.service.ts" %}
+```bash
+  get$(): Observable<User[]> {
+    return this.http.get<User[]>(this.url + '/users')
+      .pipe(
+        map((users: User[]) =>
+          users.map((user: User) => this.getUserAddress(user))
+        )
+      );
+  }
+
+  getUserAddress(user: User): User {
+    if (user.address) {
+      user.address.fullAddress = user.address.suite
+        + ' ' + user.address.street
+        + ' ' + user.address.zipcode
+        + ' ' + user.address.city;
+    }
+    return user;
+  }
+```
+{% endcode %}
+
 ### Filter
 
 L'opérateur `filter` permet de ne garder que les éléments pour lesquels la fonction `predicate` retourne `true`.
