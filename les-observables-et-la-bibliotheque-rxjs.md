@@ -333,7 +333,7 @@ export class UsersService {
 
 {% code title="src/app/users/users.component.ts" %}
 ```typescript
-  ngOnInit() {
+  ngOnInit(): void {
     this.usersService.get$().subscribe(result => this.users = result);
   }
 ```
