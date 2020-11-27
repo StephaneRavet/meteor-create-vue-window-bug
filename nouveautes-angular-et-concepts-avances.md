@@ -202,8 +202,6 @@ ng add @angular/pwa
 
 La génération et mise à jour automatique du code fournie par Angular CLI se base sur l'outil Schematics qui permet également de définir nos propres "schematics". Ces "schematics" peuvent être vues comme des "recettes" qui pourront être utilisées en ligne de commande pour générer du code, le corriger ou le mettre à jour afin de respecter les derniers "breaking changes" ou "guidelines" du framework ou d'une librairie.
 
-## Zones
-
 ## Compilation Ahead of Time \(AoT\)
 
 Angular propose deux types de compilation de templates : JiT \(Just-in-Time\) et AoT \(Ahead-of-Time\). 
