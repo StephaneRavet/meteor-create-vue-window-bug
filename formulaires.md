@@ -290,45 +290,9 @@ Affichage des erreurs
 {% hint style="success" %}
 **Amélioration**
 
-```typescript
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
-export class LoginComponent implements OnInit {
-
-  submitted = false;
-  myForm: FormGroup;
-  email: FormControl;
-  password: FormControl;
-
-  constructor(private builder: FormBuilder) {
-    this.email = new FormControl('', [Validators.required]);
-    this.password = new FormControl();
-    this.myForm = this.builder.group({
-      email: this.email,
-      password: this.password
-    });
-  }
-
-  ngOnInit(): void {
-  }
-
-  login() {
-    console.info(this.myForm);
-    this.submitted = true;
-  }
-
-}
-```
-
 ```markup
 <form (ngSubmit)="login()" [formGroup]="myForm">
-  <div *ngIf="submitted">
+  <div *ngIf="myForm.dirty">
     <div *ngIf="email.hasError('required')">
       Email requis
     </div>
