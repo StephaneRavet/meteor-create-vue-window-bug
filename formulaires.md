@@ -518,17 +518,17 @@ url = 'https://jsonplaceholder.typicode.com/users';
 // Promise style
 _checkEmail(input: FormControl): Promise<ValidationErrors | null> {
     return this.http
-        .get(this.url + '/1')
+        .get(this.url + '/users/1')
         .toPromise()
         .then((user: User) => {
-            return user.email == input.value ? { emailExists: true } : null
+            return user.email === input.value ? { emailExists: true } : null
         })
 }
 
 // Observable style
 checkEmail(input: FormControl): Observable<ValidationErrors | null> {
     return this.http
-        .get(this.url + '/1')
+        .get(this.url + '/users/1')
         .pipe(
             map((user: User) => {
                 return user.email === input.value ? { emailExists: true } : null
