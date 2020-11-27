@@ -544,7 +544,7 @@ constructor(private builder: FormBuilder, private usersService: UsersService) {
   this.email = new FormControl('', [
     Validators.required,
     Validators.email,
-  ], [this.userService._checkEmail.bind(this.userService)]);
+  ], [this.userService._checkEmail.bind(this.usersService)]);
   this.password = new FormControl('', [
     Validators.required,
     Validators.minLength(6)
