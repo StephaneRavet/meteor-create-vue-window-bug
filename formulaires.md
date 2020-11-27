@@ -7,7 +7,7 @@ Il y a 2 types de formulaires :
 
 ## Template-driven \(`FormsModule`\)
 
-Inspirée du "two-way binding", cette approche a de nombreuses limitations et s'avère peu extensible et efficace. A réserver pour des formulaires simples.
+Inspirée du "two-way binding", cette approche a de quelques limitations et s'avère peu extensible. A réserver pour des formulaires simples.
 
 Comme son nom l'indique, tout s'écrit dans le template.
 
