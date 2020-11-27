@@ -542,37 +542,3 @@ export class ProfileViewComponent {
 ```
 {% endhint %}
 
-{% hint style="success" %}
-Pensez à associer le "Guard" à une interface plutôt qu'au composant directement.
-
-```typescript
-export interface IsDirty {
-    isDirty(): boolean | Observable<boolean>;
-}
-
-@Injectable({
-    providedIn: 'root'
-})
-export class IsNotDirtyGuard implements CanDeactivate<IsDirty> {
-
-    canDeactivate(component: IsDirty,
-                  currentRoute: ActivatedRouteSnapshot,
-                  currentState: RouterStateSnapshot,
-                  nextState?: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        return component.isDirty();
-    }
-
-}
-```
-
-```typescript
-export class ProfileViewComponent implements IsDirty {
-
-    isDirty() {
-        return false;
-    }
-
-}
-```
-{% endhint %}
-
