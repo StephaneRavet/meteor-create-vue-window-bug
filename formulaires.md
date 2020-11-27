@@ -513,7 +513,7 @@ Utilisons `HttpClient` via un service.
 
 {% code title="src\\app\\core\\user.service.ts" %}
 ```typescript
-url = 'https://jsonplaceholder.typicode.com/users';
+url = 'https://jsonplaceholder.typicode.com';
 
 // Promise style
 _checkEmail(input: FormControl): Promise<ValidationErrors | null> {
