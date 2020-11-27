@@ -516,7 +516,7 @@ Utilisons `HttpClient` via un service.
 url = 'https://jsonplaceholder.typicode.com';
 
 // Promise style
-_checkEmail(input: FormControl): Promise<ValidationErrors | null> {
+checkEmail(input: FormControl): Promise<ValidationErrors | null> {
     return this.http
         .get(this.url + '/users/1')
         .toPromise()
@@ -526,7 +526,7 @@ _checkEmail(input: FormControl): Promise<ValidationErrors | null> {
 }
 
 // Observable style
-checkEmail(input: FormControl): Observable<ValidationErrors | null> {
+checkEmail$(input: FormControl): Observable<ValidationErrors | null> {
     return this.http
         .get(this.url + '/users/1')
         .pipe(
