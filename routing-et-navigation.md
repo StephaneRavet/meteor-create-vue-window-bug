@@ -403,7 +403,7 @@ export class UserProfileComponent implements OnInit {
 ```markup
 <p *ngFor="let user of users$ | async | filter:searchValue; trackBy: trackByUserId; let i = index">
   {{user.name}} : {{user.address.fullAddress}}
-  <button [routerLink]="['/users', i + 1]">Profil</button>
+  <button [routerLink]="['/users', user.id]">Profil</button>
   <button (click)="removeUser(i)">Supprimer</button>
 </p>
 <button (click)="add()">Ajouter</button>
