@@ -96,14 +96,14 @@ import {HttpClient} from '@angular/common/http';
 export class UsersService {
 
   users: any[] = [];
-  url = 'https://jsonplaceholder.typicode.com';
+  url = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(private http: HttpClient) {
   }
 
   async get(): Promise<any[]> {
     return this.users = await this.http
-      .get<any[]>(this.url + '/users')
+      .get<any[]>(this.url)
       .toPromise();
   }
 
