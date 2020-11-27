@@ -370,7 +370,7 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [HttpClientModule],
     });
     service = TestBed.inject(UserService);
   });
@@ -379,10 +379,10 @@ describe('UsersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return 10 users', async(async () => {
+  it('should return 10 users', async () => {
     const result = await service.get();
     expect(result.length).toEqual(10);
-  }));
+  });
 });
 ```
 {% endcode %}
