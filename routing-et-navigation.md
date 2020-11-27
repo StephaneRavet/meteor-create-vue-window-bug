@@ -260,12 +260,12 @@ export class UserProfileComponent {
     user$: Observable<User>;
 
     constructor(private activatedRoute: ActivatedRoute,
-                private userService: UserService) {
+                private usersService: UsersService) {
 
         this.user$ = this.activatedRoute.paramMap
             .pipe(
                 map(paramMap => paramMap.get('userId')),
-                switchMap(userId=> this.userService.get(userId))
+                switchMap(userId=> this.usersService.get(userId))
             );
 
     }
@@ -288,8 +288,6 @@ Le `Router` est le service principal du routing. Il permet de :
 * ...
 
 `Router` est bien sûr à injecter dans le constructeur du composant qui souhaite l'utiliser.
-
-
 
 ## Configuration de l'Hébergement
 
