@@ -329,7 +329,7 @@ export class AppRoutingModule {
 ```
 {% endcode %}
 
-{% code title="src\\app\\users\\user.service.ts" %}
+{% code title="src\\app\\users\\users.service.ts" %}
 ```typescript
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -341,7 +341,7 @@ import {FormControl} from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UsersService {
   url = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(private http: HttpClient) {
