@@ -347,7 +347,7 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  getOne(id): Promise<User> {
+  getOne(id: number): Promise<User> {
     return this.http.get<User>(this.url + '/' + id)
       .toPromise();
   }
