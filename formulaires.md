@@ -513,12 +513,12 @@ Utilisons `HttpClient` via un service.
 
 {% code title="src\\app\\core\\user.service.ts" %}
 ```typescript
-url = 'https://jsonplaceholder.typicode.com';
+url = 'https://jsonplaceholder.typicode.com/users';
 
 // Promise style
 checkEmail(input: FormControl): Promise<ValidationErrors | null> {
     return this.http
-        .get(this.url + '/users/1')
+        .get(this.url + '/1')
         .toPromise()
         .then((user: User) => {
             return user.email === input.value ? { emailExists: true } : null
@@ -528,7 +528,7 @@ checkEmail(input: FormControl): Promise<ValidationErrors | null> {
 // Observable style
 checkEmail$(input: FormControl): Observable<ValidationErrors | null> {
     return this.http
-        .get(this.url + '/users/1')
+        .get(this.url + '/1')
         .pipe(
             map((user: User) => {
                 return user.email === input.value ? { emailExists: true } : null
