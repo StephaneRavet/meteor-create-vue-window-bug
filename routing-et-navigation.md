@@ -14,6 +14,14 @@ Grâce au système de "Routing", les utilisateurs peuvent :
 
 Angular fournit **nativement un module de "Routing"** pour répondre à ce besoin.
 
+## Configuration de l'Hébergement
+
+{% hint style="info" %}
+Pour le bon fonctionnement du "Routing", **il est important d'implémenter une règle de "rewrite" sur votre plateforme d'hébergement** afin que toutes les "routes" renvoient le même fichier `index.html` produit dans le dossier `dist` lors du "build" _\(`npm build`\)_.
+
+Autrement, en accédant directement à une "route" de l'application, l'utilisateur obtiendrait une erreur 404.
+{% endhint %}
+
 ## Déclarer et configurer des routes et URLs
 
 La configuration du routing est déjà préparée pour nous dans `app-routing.module.ts`.
@@ -288,14 +296,6 @@ Le `Router` est le service principal du routing. Il permet de :
 * ...
 
 `Router` est bien sûr à injecter dans le constructeur du composant qui souhaite l'utiliser.
-
-## Configuration de l'Hébergement
-
-{% hint style="info" %}
-Pour le bon fonctionnement du "Routing", **il est important d'implémenter une règle de "rewrite" sur votre plateforme d'hébergement** afin que toutes les "routes" renvoient le même fichier `index.html` produit dans le dossier `dist` lors du "build" _\(`npm build`\)_.
-
-Autrement, en accédant directement à une "route" de l'application, l'utilisateur obtiendrait une erreur 404.
-{% endhint %}
 
 ## Mise en pratique
 
